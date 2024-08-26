@@ -1,39 +1,42 @@
 const container = document.querySelector(".container");
-const button = document.querySelector("button");
 
 function createDivs(times) {
+    container.style.width = "960px";
+    
     for(let k = 0; k < times; k++) {
         for(let i = 0; i < times; i++) {
-            const div = document.createElement("div");
-    
-            div.style.height = `${Math.floor(container.offsetWidth / times)}px`;
-            div.style.width = `${Math.floor(container.offsetWidth / times)}px`;
-            div.style.background = "red";
-
-            console.log(container.offsetWidth / times)
+            const squares = document.createElement("div");
+            squares.classList.add("squares");  
             
-            container.appendChild(div);
-    
-            div.addEventListener("mouseover", () => {
-                div.style.background = "green";
-            });
-    
-            div.addEventListener("mouseout", () => {
-                div.style.background = "red";
+            squares.style.height = `${Math.floor(container.offsetWidth / times)}px`;
+            squares.style.width = `${Math.floor(container.offsetWidth / times)}px`;
+            squares.style.background = "rgb(4, 4, 189)";
+            
+            container.appendChild(squares);
+            
+            squares.addEventListener("mouseover", () => {
+                squares.style.background = "yellow";
             });
         }
     }
 };
 
-function removeDivs(times) {
-    for(let i = 0; i < times; i++) {
-        container.remove();
-    }
-};
+const button = document.querySelector("#create");
+const clear = document.querySelector("#remove");
 
 button.addEventListener("click", () => {
-    let sides = prompt("Size of the sketch? (MAX 100)");
-    createDivs(sides);
-    removeDivs(sides);
+    let sides = prompt("Size of the sketch? (MAX 100x100)");
+
+    if(sides <= 100 && sides >= 1) {
+        createDivs(sides);
+    } else {
+        alert("Choose another size");
+    }
 });
 
+
+clear.addEventListener("click", () => {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+});
