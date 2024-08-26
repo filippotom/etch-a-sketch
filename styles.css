@@ -1,8 +1,10 @@
 * {
     box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
 }
 
 body {
+    background: black;
     margin: auto;   
     display: flex;
     flex-direction: column;
@@ -11,7 +13,8 @@ body {
     gap: 2rem;
 }
 
-button {
+#create  {
+    background-color: yellow;
     font-size: large;
     margin-top: 2rem;
     padding-inline: 1.5rem;
@@ -20,9 +23,18 @@ button {
     border-radius: 1rem;
 }
 
+#remove {
+    background-color: grey;
+    font-size: medium;
+    margin-top: 2rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border: none;
+    color: white;
+    border-radius: 1rem;
+}
+
 .container {
-    width: 960px;
     display: flex;   
-    justify-content: space-between;
     flex-wrap: wrap;
 }
